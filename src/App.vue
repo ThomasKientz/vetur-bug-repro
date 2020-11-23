@@ -1,28 +1,41 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    {{ foo }}
+    <img alt="Vue logo" src="./assets/logo.png" @click="test" />
+    <vue-flux />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import { VueFlux } from "vue-flux";
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
-</script>
+  name: "App",
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+  components: {
+    VueFlux,
+  },
+
+  data() {
+    return {
+      foo: "bar",
+    };
+  },
+
+  created() {
+    this.test();
+  },
+
+  computed: {
+    bar() {
+      return this.foo;
+    },
+  },
+
+  methods: {
+    test() {
+      console.log(this.foo);
+    },
+  },
+};
+</script>
